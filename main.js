@@ -1,4 +1,3 @@
-//* The getComputerChoice function generates a random number between 0 and 2 and assigns a string between "Rock, Paper or Scissor"
 function getComputerChoice() {
   let result = Math.floor(Math.random() * 3);
   console.log(result);
@@ -13,7 +12,6 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-//* The getHumanChoice function asks the user for "Rock, Paper or Scissor" and assigns that string to the variable
 function getHumanChoice() {
   let humanChoice = prompt("Rock, Paper or Scissor");
   console.log(humanChoice);
@@ -24,7 +22,6 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-//* The playRound function compares the 2 choices and in case of winning add a value of 1 to the respective winner's score variable
 function playRound(humanChoice, computerChoice) {
   if (computerChoice === humanChoice) {
     alert("The choices were the same, no one wins!");
@@ -55,7 +52,6 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-//* The playGame function uses a for loop to play the game for 5 times
 function playGame() {
   for (let i = 0; i < 5; i++) {
     let humanChoice = getHumanChoice();
@@ -70,7 +66,6 @@ function playGame() {
 
 playGame();
 
-//* The gameWinner function compares the scores variables and declares the winner
 function gameWinner(humanScore, computerScore) {
   if (humanScore === computerScore) {
     alert("No one winned try again!");
