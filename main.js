@@ -21,12 +21,6 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
-
-humanChoice = humanChoice.toLowerCase();
-computerChoice = computerChoice.toLowerCase();
-
 function playRound(humanChoice, computerChoice) {
   if (computerChoice === humanChoice) {
     alert("The choices were the same, no one wins!");
@@ -57,6 +51,28 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-playRound(humanChoice, computerChoice);
-console.log(computerScore);
-console.log(humanScore);
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+
+    playRound(humanChoice, computerChoice);
+  }
+}
+
+playGame();
+
+function gameWinner(humanScore, computerScore) {
+  if (humanScore === computerScore) {
+    alert("No one winned try again!");
+  } else if (humanScore > computerScore) {
+    alert("The winner is Player!");
+  } else if (humanScore < computerScore) {
+    alert("The winner is Cpu!");
+  }
+}
+
+gameWinner(humanScore, computerScore);
