@@ -1,7 +1,6 @@
 function getComputerChoice() {
   let result = Math.floor(Math.random() * 3);
   console.log(result);
-  
   let computerChoice;
   if (result === 0) {
     computerChoice = "Rock";
@@ -13,5 +12,9 @@ function getComputerChoice() {
   return computerChoice;
 }
 console.log(getComputerChoice());
-
-
+function getHumanChoice() {
+  let humanChoice = prompt("Rock, Paper or Scissor");
+  console.log(humanChoice);
+  return humanChoice;
+}
+getHumanChoice();
