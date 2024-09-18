@@ -1,28 +1,37 @@
+const rock_button = document.querySelector("#rock-button");
+const paper_button = document.querySelector("#paper-button");
+const scissor_button = document.querySelector("#scissor-button");
+
+console.log(rock_button.value);
+console.log(paper_button.value);
+console.log(scissor_button.value);
+
 function getComputerChoice() {
   let result = Math.floor(Math.random() * 3);
-  console.log(result);
   let computerChoice;
   if (result === 0) {
-    computerChoice = "Rock";
+    computerChoice = "rock";
   } else if (result === 1) {
-    computerChoice = "Paper";
+    computerChoice = "paper";
   } else if (result === 2) {
-    computerChoice = "Scissor";
+    computerChoice = "scissor";
   }
   return computerChoice;
-}
-
-function getHumanChoice() {
-  let humanChoice = prompt("Rock, Paper or Scissor");
-  console.log(humanChoice);
-  return humanChoice;
 }
 
 //* Declaration of 2 variables to keep score of the game
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
+function playRound(event) {
+  const humanChoice = event.target.value;
+  const computerChoice = getComputerChoice();
+
+  console.log(humanChoice);
+  console.log(computerChoice);
+  
+  
+
   if (computerChoice === humanChoice) {
     alert("The choices were the same, no one wins!");
   } else if (computerChoice === "rock" && humanChoice === "paper") {
@@ -52,6 +61,11 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+rock_button.addEventListener("click", playRound);
+paper_button.addEventListener("click", playRound);
+scissor_button.addEventListener("click", playRound);
+
+/*
 function playGame() {
   for (let i = 0; i < 5; i++) {
     let humanChoice = getHumanChoice();
@@ -62,9 +76,7 @@ function playGame() {
 
     playRound(humanChoice, computerChoice);
   }
-}
-
-playGame();
+} */
 
 function gameWinner(humanScore, computerScore) {
   if (humanScore === computerScore) {
@@ -76,4 +88,4 @@ function gameWinner(humanScore, computerScore) {
   }
 }
 
-gameWinner(humanScore, computerScore);
+// gameWinner(humanScore, computerScore);
