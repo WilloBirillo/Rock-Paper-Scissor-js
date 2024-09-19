@@ -59,6 +59,9 @@ const score_container = document.querySelector("#score");
 const player_score_display = document.createElement("div");
 const cpu_score_display = document.createElement("div");
 
+player_score_display.textContent = `Player score: ${humanScore}`;
+cpu_score_display.textContent = `Cpu score: ${computerScore}`;
+
 score_container.appendChild(player_score_display);
 score_container.appendChild(cpu_score_display);
 
@@ -70,6 +73,8 @@ function updateScores() {
   cpu_score_display.textContent = `Cpu score: ${computerScore}`;
 }
 
+//! non funziona la funzione sotto
+/*
 function gameWinner(humanScore, computerScore) {
   if (humanScore == 5 || computerScore == 5) {
   }
@@ -80,4 +85,5 @@ function gameWinner(humanScore, computerScore) {
   }
 }
 
-// gameWinner(humanScore, computerScore);
+gameWinner(humanScore, computerScore)
+*/
