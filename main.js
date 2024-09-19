@@ -26,64 +26,100 @@ let computerScore = 0;
 function playRound(event) {
   const humanChoice = event.target.value;
   const computerChoice = getComputerChoice();
-
   if (computerChoice === humanChoice) {
     alert("The choices were the same, no one wins!");
-  } else if (computerChoice === "rock" && humanChoice === "paper") {
-    alert("Paper beats Rock, player wins!");
+  } else if (
+    (computerChoice === "rock" && humanChoice === "paper") ||
+    (computerChoice === "scissor" && humanChoice === "rock") ||
+    (computerChoice === "paper" && humanChoice === "scissor")
+  ) {
     humanScore += 1;
-  } else if (computerChoice === "rock" && humanChoice === "scissor") {
-    alert("Rock beats Scissor, cpu wins!");
-    computerScore += 1;
-  } else if (computerChoice === "paper" && humanChoice === "rock") {
-    alert("Paper beats Rock, cpu wins!");
-    computerScore += 1;
-  } else if (computerChoice === "paper" && humanChoice === "scissor") {
-    alert("Scissor beats Paper, player wins!");
-    humanScore += 1;
-  } else if (computerChoice === "scissor" && humanChoice === "rock") {
-    alert("Rock beats Scissor, player wins!");
-    humanScore += 1;
-  } else if (computerChoice === "scissor" && humanChoice === "paper") {
-    alert("Scissor beats Paper, cpu wins!");
+  } else if (
+    (computerChoice === "rock" && humanChoice === "scissor") ||
+    (computerChoice === "paper" && humanChoice === "rock") ||
+    (computerChoice === "scissor" && humanChoice === "paper")
+  ) {
     computerScore += 1;
   }
   updateScores();
+
+  if (humanScore == 5 || computerScore == 5) {
+    gameWinner(humanScore, computerScore);
+  }
 }
 
 rock_button.addEventListener("click", playRound);
 paper_button.addEventListener("click", playRound);
 scissor_button.addEventListener("click", playRound);
 
-const score_container = document.querySelector("#score");
+const information_container = document.querySelector("#information");
 const player_score_display = document.createElement("div");
 const cpu_score_display = document.createElement("div");
-
-player_score_display.textContent = `Player score: ${humanScore}`;
-cpu_score_display.textContent = `Cpu score: ${computerScore}`;
+const score_container = document.querySelector("#score");
 
 score_container.appendChild(player_score_display);
 score_container.appendChild(cpu_score_display);
 
-console.log(humanScore); // non logga queste robe non so perché
-console.log(computerScore);
+/*
+function playerRoundMessage() {
+  const player_message = document.createElement("div");
+  player_message.textContent = "Good job, keep going!";
+  information_container.appendChild(player_message);
+}
+
+function cpuRoundMessage() {
+  const cpu_message = document.createElement("div");
+  cpu_message.textContent = "Too bad, cpu wins the round";
+  information_container.appendChild(cpu_message);
+}
+
+function removeRoundMessage() {
+  player_message.remove();
+  cpu_message.remove();
+}*/
+
+function gameWinner(humanScore, computerScore) {
+  const endgame_message = document.createElement("div");
+  const endgame_button = document.createElement("button");
+  endgame_button.classList.add("remove-button")
+
+  if (humanScore == 5) {
+    endgame_message.textContent = "Good job you won";
+    information_container.appendChild(endgame_message);
+  } else if (computerScore == 5) {
+    endgame_message.textContent = "Too bad you lost";
+    information_container.appendChild(endgame_message);
+  }
+  disableButtons();
+  endgame_button.textContent = "RESTART";
+
+  information_container.appendChild(endgame_button);
+  endgame_button.addEventListener("click", () => {
+    resetGame();
+
+    endgame_button.remove();
+    endgame_message.remove();
+  });
+}
+
+function disableButtons() {
+  rock_button.disabled = true;
+  paper_button.disabled = true;
+  scissor_button.disabled = true;
+}
+
+function resetGame() {
+  humanScore = 0;
+  computerScore = 0;
+  updateScores();
+  rock_button.disabled = false;
+  paper_button.disabled = false;
+  scissor_button.disabled = false;
+}
 
 function updateScores() {
   player_score_display.textContent = `Player score: ${humanScore}`;
   cpu_score_display.textContent = `Cpu score: ${computerScore}`;
 }
 
-//! non funziona la funzione sotto
-/*
-function gameWinner(humanScore, computerScore) {
-  if (humanScore == 5 || computerScore == 5) {
-  }
-  if (humanScore > computerScore) {
-    alert("The winner is Player!");
-  } else {
-    alert("The winner is Cpu!");
-  }
-}
-
-gameWinner(humanScore, computerScore)
-*/
+updateScores();
