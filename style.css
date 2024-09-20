@@ -59,13 +59,24 @@ h1 {
     gap: 8px;
 }
 
-#score {
+#score,
+#show-choice,
+#your-choices {
     width: 100%;
     display: flex;
     gap: 8px;
-    justify-content: space-between;
-    margin-top: 20px;
 }
+
+#score {
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+#show-choice,
+#your-choices {
+    justify-content: center;
+}
+
 
 .remove-button {
     width: 200px;
