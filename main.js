@@ -64,23 +64,25 @@ function playRound(event) {
 
 function playerWin() {
   const player_win = document.createElement("div");
-  player_win.textContent = "Good job you won";
+  player_win.textContent = "YES You won, Good job";
+  player_win.classList.add("player-win-text");
   information_container.appendChild(player_win);
   updateMessage(player_win);
 }
 
 function computerWin() {
   const computer_win = document.createElement("div");
-  computer_win.textContent = "Too bad you lost";
+  computer_win.textContent = "NOO You lost, Better luck next time";
+  computer_win.classList.add("computer-win-text");
   information_container.appendChild(computer_win);
   updateMessage(computer_win);
 }
 
 function tieRoundMessage() {
   const tie_message = document.createElement("div");
-  tie_message.textContent = "Close enough, no one wins the round! 👺"
+  tie_message.textContent = "Close enough, no one wins the round! 👺";
   information_container.appendChild(tie_message);
-  updateMessage(tie_message)
+  updateMessage(tie_message);
 }
 
 function playerRoundMessage() {
@@ -106,8 +108,8 @@ function updateMessage(message) {
 }
 
 function updateScores() {
-  player_score_display.textContent = `Player score: ${humanScore}`;
-  cpu_score_display.textContent = `Cpu score: ${computerScore}`;
+  player_score_display.textContent = `Your Score 😂🫵: ${humanScore}`;
+  cpu_score_display.textContent = `Computer Score 🤖: ${computerScore}`;
 }
 
 function gameWinner(endgame_button, humanScore, computerScore) {
@@ -117,7 +119,7 @@ function gameWinner(endgame_button, humanScore, computerScore) {
     computerWin();
   }
   disableButtons();
-  
+
   information_container.appendChild(endgame_button);
   endgame_button.addEventListener("click", () => {
     resetGame();
