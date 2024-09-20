@@ -19,6 +19,8 @@ button {
     width: 300px;
     height: 300px;
     font-size: 120px;
+    border: solid #fdfbd4;
+    border-radius: 20px;
 }
 
 div{
@@ -30,6 +32,7 @@ div{
 h1 {
     font-weight: bold;
     font-size: 50px;
+    margin-bottom: 10px;
 }
 
 #game-container {
@@ -38,7 +41,7 @@ h1 {
     justify-content: center;
     align-items: center;
     height: 100%;
-    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 #button-container {
@@ -70,5 +73,11 @@ h1 {
     font-size: 20px;
     border: solid #fdfbd4;
     border-radius: 10px;
+    font-weight: bold;
+}
+
+.computer-win-text,
+.player-win-text {
+    font-size: 30px;
     font-weight: bold;
 }
