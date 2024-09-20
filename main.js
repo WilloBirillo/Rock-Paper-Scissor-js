@@ -19,6 +19,13 @@ const endgame_button = document.createElement("button");
 endgame_button.classList.add("remove-button");
 endgame_button.textContent = "RESTART";
 
+const show_computer_choice = document.createElement("div");
+const show_player_choice = document.createElement("div");
+const show_container = document.querySelector("#show-choice");
+const choices_text = document.querySelector("#your-choices");
+
+choices_text.textContent = "YOUR CHOICES";
+
 score_container.appendChild(player_score_display);
 score_container.appendChild(cpu_score_display);
 
@@ -33,6 +40,22 @@ function getComputerChoice() {
     computerChoice = "scissor";
   }
   return computerChoice;
+}
+function showChoice(humanChoice, computerChoice, show_computer_choice, show_player_choice){
+  if (humanChoice === "rock"){
+    show_player_choice.textContent = "✊";
+  } else if (humanChoice === "paper"){
+    show_player_choice.textContent = "🤚";
+  } else if (humanChoice === "scissor"){
+    show_player_choice.textContent = "✌️";
+  }
+  if (computerChoice === "rock") {
+    show_computer_choice.textContent = "✊";
+  } else if (computerChoice === "paper") {
+    show_computer_choice.textContent = "🤚";
+  } else if (computerChoice=== "scissor") {
+    show_computer_choice.textContent = "✌️";
+  }
 }
 
 function playRound(event) {
@@ -56,10 +79,13 @@ function playRound(event) {
     cpuRoundMessage();
   }
   updateScores();
-
   if (humanScore == 5 || computerScore == 5) {
     gameWinner(endgame_button, humanScore, computerScore);
   }
+
+  showChoice(humanChoice, computerChoice, show_computer_choice, show_player_choice);
+  show_container.appendChild(show_player_choice);
+  show_container.appendChild(show_computer_choice);
 }
 
 function playerWin() {
@@ -105,6 +131,8 @@ function updateMessage(message) {
   paper_button.addEventListener("click", () => message.remove());
   scissor_button.addEventListener("click", () => message.remove());
   endgame_button.addEventListener("click", () => message.remove());
+  endgame_button.addEventListener("click", () => show_computer_choice.remove());
+  endgame_button.addEventListener("click", () => show_player_choice.remove());
 }
 
 function updateScores() {
